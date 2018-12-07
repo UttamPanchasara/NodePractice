@@ -1,15 +1,15 @@
-exports.success = function success(data){
+exports.success = function success(data) {
 	return {
-				success: true,
-				message: 'success',
-				data: data
+		success: true,
+		message: 'success',
+		data: data
 	}
 };
 
-exports.error = function error(data){
+exports.error = function error(data) {
 	return {
-				success: false,
-				message: 'error',
-				data: data
+		success: false,
+		message: 'error',
+		data: data
 	}
 };
