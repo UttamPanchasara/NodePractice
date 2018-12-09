@@ -36,21 +36,22 @@ app.get(endPoint + '/users', function (req, res) {
 	}
 });
 
+// add user
 app.post(endPoint + '/users', function (req, res) {
 
 	console.log(req.body.name);
 
 	if (req.body) {
-		var name = req.body.name;
-		var email = req.body.email;
-		var number = req.body.number;
+		var name = req.body.userName;
+		var email = req.body.userEmail;
+		var number = req.body.userNumber;
 
 		if (name && number && email) {
-			var sql = "INSERT INTO users(u_name,u_email,u_number) VALUES('" + name + "', '" + email + "', '" + number + "')";
+			var sql = "INSERT INTO users(userName,userEmail,userNumber) VALUES('" + name + "', '" + email + "', '" + number + "')";
 			db.query(sql, function (err, result, fields) {
 				if (err) throw err;
 
-				db.query("SELECT * FROM users WHERE u_email = '" + email + "' LIMIT 1", function (err, result, fields) {
+				db.query("SELECT * FROM users WHERE userEmail = '" + email + "' LIMIT 1", function (err, result, fields) {
 					res.status(200).send(
 						servedata.success(result)
 					);
