@@ -3,7 +3,7 @@ var con = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'collect'
+  database: 'icollect'
 });
 
 module.exports = con;
