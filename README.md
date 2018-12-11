@@ -9,32 +9,32 @@ Practice : Basic of JavaScript + Node, In which learning how to write APIs on No
 
 **GET users :**
 ``` 
-localhost:3000/users
+localhost:3000/api/v1/users
 ```
 
 **GET single user :**
 ``` 
-localhost:3000/users/id
+localhost:3000/api/v1/users/id
 ```
 
 **POST create user :**
 ``` 
-localhost:3000/users/create
+localhost:3000/api/v1/users/create
 ```
 
 **GET records :**
 ``` 
-localhost:3000/records
+localhost:3000/api/v1/records
 ```
 
 **GET single record :**
 ``` 
-localhost:3000/records/id
+localhost:3000/api/v1/records/id
 ```
 
 **POST create record :**
 ``` 
-localhost:3000/records/create
+localhost:3000/api/v1/records/create
 ```
 
 ## Input? :
