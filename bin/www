@@ -22,6 +22,17 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /**
+ * Create Socket and define global to access from any files
+ */
+global.io = require('socket.io')(server);
+
+/**
+ * Listen connection events
+ */
+io.on('connect', onConnected);
+io.on('disconnect', onDisconnected);
+
+/**
  * Listen on provided port, on all network interfaces.
  */
 
@@ -47,6 +58,18 @@ function normalizePort(val) {
   }
 
   return false;
+}
+
+/**
+ * Socket Event listener
+ */
+
+function onConnected(data) {
+  console.log('client connected' + data);
+}
+
+function onDisconnected(reason) {
+  console.log('client disconnected' + reason);
 }
 
 /**

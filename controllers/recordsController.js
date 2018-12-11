@@ -6,7 +6,7 @@ var dateformat = require('dateformat');
 var currentTime = new Date();
 
 // Basic usage
-var date = dateformat(currentTime, "dd/mm/yyyy");
+var date = dateformat(currentTime, "dd-mm-yyyy");
 
 // get records list
 exports.records_list = function (req, res) {
@@ -55,6 +55,8 @@ exports.records_create = function (req, res) {
                         if (err) {
                             servedata.sendError(200, err, res);
                         } else {
+                            //emit record added msg
+                            io.emit('new_record', result[0]);
                             servedata.sendResult(res, result);
                         }
                     })

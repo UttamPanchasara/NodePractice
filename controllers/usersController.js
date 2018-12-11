@@ -1,6 +1,18 @@
 var db = require('../config/dbconfig.js');
 var servedata = require('../helpers/servedata');
 
+
+exports.emitUsers = function () {
+	var sql = "SELECT * FROM users";
+	db.query(sql, function (err, result, fields) {
+		if (err) {
+			io.emit('users', null);
+		} else {
+			io.emit('users', result);
+		}
+	});
+}
+
 // get users list
 exports.users_list = function (req, res) {
 
@@ -44,8 +56,8 @@ exports.users_create = function (req, res) {
 					servedata.sendError(200, err, res);
 				} else {
 					// if user found with entered email address sedn error.
-					if (result) {
-						servedata.sendErrorWithMessage(200, "Email address already registered!", res);
+					if (!result) {
+						servedata.sendErrorWithMessage(200, "Email address already registered!" + result, res);
 					} else {
 						// insert user
 						var sql = "INSERT INTO users(userName,userEmail,userNumber) VALUES('" + name + "', '" + email + "', '" + number + "')";
