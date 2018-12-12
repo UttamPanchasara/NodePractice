@@ -64,8 +64,8 @@ function normalizePort(val) {
  * Socket Event listener
  */
 
-function onConnected(data) {
-  console.log('client connected' + data);
+function onConnected() {
+  console.log('client connected');
 }
 
 function onDisconnected(reason) {

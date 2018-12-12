@@ -4,8 +4,6 @@ var router = express.Router();
 //required controller modules
 var user_controller = require('../controllers/usersController');
 
-user_controller.emitUsers();
-
 /* GET users listing. */
 router.get('/', user_controller.users_list);
 
