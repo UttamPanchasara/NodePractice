@@ -27,10 +27,30 @@ var server = http.createServer(app);
 global.io = require('socket.io')(server);
 
 /**
+ * get db instance, declared global
+ */
+global.db = require('../config/dbconfig.js');
+
+/**
+ * serverdata instance as global
+ */
+global.servedata = require('../helpers/servedata');
+
+var eventHandler = require('../ioeventhandler/ioEventHandler');
+
+/**
  * Listen connection events
  */
 io.on('connect', onConnected);
-io.on('disconnect', onDisconnected);
+
+io.on('connection', (socket) => {
+
+  socket.on('load_users', (data) => {
+    eventHandler.loadUsers(data);
+  });
+
+  socket.on('disconnect', onDisconnected);
+});
 
 /**
  * Listen on provided port, on all network interfaces.

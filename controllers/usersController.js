@@ -1,5 +1,13 @@
-var db = require('../config/dbconfig.js');
-var servedata = require('../helpers/servedata');
+
+
+exports.emitUsers = function (req, res) {
+	var sql = "SELECT * FROM users";
+	db.query(sql, function (err, result, fields) {
+		if (!err) {
+			io.emit('load_users', result);
+		}
+	});
+}
 
 // get users list
 exports.users_list = function (req, res) {
