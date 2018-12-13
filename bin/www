@@ -42,7 +42,6 @@ var eventHandler = require('../ioeventhandler/ioEventHandler');
  * Listen connection events
  */
 io.on('connect', onConnected);
-
 io.on('connection', (socket) => {
 
   socket.on('load_users', (data) => {
