@@ -48,6 +48,18 @@ io.on('connection', (socket) => {
     eventHandler.loadUsers(data);
   });
 
+  socket.on('room', function (room) {
+    console.log('client want to join :' + room);
+    socket.join(room);
+  });
+
+  socket.on('send-message', function (data) {
+    socket.to(data.roomId).emit('message', data);
+
+    console.log('send to room :' + data.roomId);
+    console.log('msg :' + data.message);
+  });
+
   socket.on('disconnect', onDisconnected);
 });
 
