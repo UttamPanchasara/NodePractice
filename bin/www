@@ -60,6 +60,12 @@ io.on('connection', (socket) => {
     console.log('msg :' + data.message);
   });
 
+  socket.on('typing-msg', function (data) {
+    socket.to(data.roomId).emit('typing', data);
+
+    console.log('typing-msg :' + data);
+  });
+
   socket.on('disconnect', onDisconnected);
 });
 
